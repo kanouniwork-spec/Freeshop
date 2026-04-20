@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Variables ──────────────────────────────────────────────────────────── */
+:root {
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-inter:    'Inter', system-ui, sans-serif;
+  --gold:          #d4af37;
+  --gold-light:    #f2d891;
+  --obsidian:      #0a0a0a;
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-obsidian-900 text-obsidian-100 font-sans antialiased;
+    background-color: #0a0a0a;
+    color: #e8e8e8;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #111111;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f2d891;
+  }
+
+  /* Text selection */
+  ::selection {
+    background-color: #d4af37;
+    color: #0a0a0a;
+  }
+}
+
+/* ─── Component Styles ───────────────────────────────────────────────────────── */
+@layer components {
+
+  /* Gold divider line */
+  .gold-divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-gold-500 to-transparent;
+  }
+
+  /* Section heading with gold accent */
+  .section-heading {
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl text-obsidian-100 leading-tight;
+  }
+
+  /* Gold accent text */
+  .text-gold {
+    color: #d4af37;
+  }
+
+  /* Primary CTA button */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2
+           bg-gold-500 text-obsidian-900
+           font-sans font-semibold text-sm tracking-widest uppercase
+           px-8 py-4
+           border border-gold-500
+           transition-all duration-300
+           hover:bg-transparent hover:text-gold-400
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-obsidian-900;
+  }
+
+  /* Ghost / outline button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           bg-transparent text-gold-500
+           font-sans font-semibold text-sm tracking-widest uppercase
+           px-8 py-4
+           border border-gold-500
+           transition-all duration-300
+           hover:bg-gold-500 hover:text-obsidian-900
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-obsidian-900;
+  }
+
+  /* Product card */
+  .product-card {
+    @apply relative overflow-hidden group cursor-pointer
+           bg-obsidian-800 border border-obsidian-700
+           transition-all duration-500
+           hover:border-gold-500/50;
+  }
+
+  /* Input field */
+  .input-dark {
+    @apply w-full bg-obsidian-800 border border-obsidian-600
+           text-obsidian-100 placeholder-obsidian-400
+           px-4 py-3 font-sans text-sm
+           focus:outline-none focus:border-gold-500
+           transition-colors duration-200;
+  }
+
+  /* Gold tag / badge */
+  .badge-gold {
+    @apply inline-block text-[10px] font-sans font-semibold tracking-widest uppercase
+           bg-gold-500 text-obsidian-900 px-3 py-1;
+  }
+
+  /* Nav link */
+  .nav-link {
+    @apply font-sans text-xs tracking-widest uppercase text-obsidian-300
+           transition-colors duration-200 hover:text-gold-400;
+  }
+}
+
+/* ─── Utility Overrides ──────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+}
